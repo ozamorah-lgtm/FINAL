@@ -37,8 +37,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Registramos los modelos
-db.cliente = require("./cliente.model.js")(sequelize, Sequelize);
-db.proveedor = require("./proveedor.model.js")(sequelize, Sequelize);
 db.producto = require("./producto.model.js")(sequelize, Sequelize);
 
 // Exportamos el objeto db

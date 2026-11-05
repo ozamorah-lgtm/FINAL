@@ -30,8 +30,6 @@ app.get("/", (req, res) => {
 });
 
 //require("./app/routes/turorial.routes")(app);
-require("./app/routes/cliente.routes")(app);
-require("./app/routes/proveedor.routes")(app);
 require("./app/routes/producto.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8081;
