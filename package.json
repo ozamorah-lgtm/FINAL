@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-express-sequelize-postgresql",
+  "version": "1.0.0",
+  "description": "Node.js Rest Apis with Express, Sequelize & PostgreSQL.",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "espress": "^0.0.0",
+    "express": "^5.2.1",
+    "pg": "^8.22.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.8"
+  }
+}
