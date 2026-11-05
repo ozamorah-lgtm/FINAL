@@ -1,28 +1,28 @@
 // vamos a manejar los recursos de get, post, put y delete  
 
 const db= require("../models");
-const Producto = db.producto;
+const Producto = db.producto; // aqui cambio
 const Op = db.Sequelize.Op;
 
-exports.create =(req, res)=>{
-// logica para crear el nuevo proveedor
 
-if(!req.body.nombre){
+// CREAR NUEVO
+exports.create =(req, res)=>{
+
+if(!req.body.nombre){ //aqui cambio
     res.status(400)({
 
         massage:"el nombre es requerido"
     });
     return;
 }
-const producto={
-    nombre:req.body.nombre,
-     precio:req.body.precio,
-      cantidad:req.body.cantidad,
-        descripcion:req.body.descripcion ,
+const producto={ // aqui cambio
+    nombre:req.body.nombre, // aqui cambio
+     precio:req.body.precio, // aqui cambio
+      cantidad:req.body.cantidad, // aqui cambio
+        descripcion:req.body.descripcion , // aqui cambio
 }
 
-// Guardar un nuevo proveedor en la base de datos
-Producto.create(producto)
+Producto.create(producto) // aqui cambio
 .then(data=>{
     res.send(data);
 })
@@ -35,11 +35,10 @@ Producto.create(producto)
 };
 
 
-// Recuperar todos los proveedores de la base de datos.
+// MOSTRAR TODOS
 exports.findAll=(req, res)=>{
-    const nombre= req.query.nombre;
-    var condition = nombre ?{ nombre: {[Op.iLike]: '%${nombre}%'}}: null;
-Producto.findAll({where:condition})
+   
+Producto.findAll() // aqui cambio
 .then(data=>{
     res.send(data);
 })
@@ -51,11 +50,11 @@ Producto.findAll({where:condition})
 };
 
 
-// Buscar un único tutorial por ID
+// BUSCAR POR ID 
 exports.findOne = (rep,res) => {
-const  id = req.params.id;
+const  id = req.params.id; // aqui cambio si quiero buscar por ejemplo id_productos
 
-Producto.findByPk(id)
+Producto.findByPk(id) // aqui cambio
 .then(data=>{
  res .send(data);
 })  
@@ -66,11 +65,12 @@ Producto.findByPk(id)
 });
 };
 
-// Actualizar un tutorial mediante el ID de la solicitud
+
+// ACTUALIZAR
 exports.update = (req,res)=>{
     const id=req.params.id;
 
-    Producto.update(req.body,{
+    Producto.update(req.body,{ // aqui cambio
         where: {id: id}
     })
     .then(num=>{
@@ -93,11 +93,11 @@ exports.update = (req,res)=>{
 };
 
 
-// Eliminar un cliente con el ID especificado en la solicitud
+// ELIMINAR
 exports.delete =(req, res) =>{
     const id= req.params.id;
     //utilizamos el metodo destroy para eliminar el objeto mandamos la condicionante wuere id = parametro que recibimos
-Producto.destroy({
+Producto.destroy({ // aqui cambio
     where:{id:id}
 })
 .then (num=>{
@@ -119,9 +119,9 @@ Producto.destroy({
 };
 
 
-// Eliminar todos los clientes de la base de datos.
+// ELIMINAR TODOS
 exports.deleteAll=(req,res) =>{
-    Producto.destroy({
+    Producto.destroy({  // aqui cambio
         where:{},
         truncate:false
     })

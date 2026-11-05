@@ -1,20 +1,27 @@
 module.exports = app => {
-    const producto = require("../controllers/producto.controller.js");
+    const producto = require("../controllers/producto.controller.js"); // aqui cambio
     var router = require("express").Router();
-    // Create a new Client
+
+    // CREAR NUEVO
     router.post("/create/", producto.create);
-    // Retrieve all Client
+
+    // MOSTRAR TODOS
     router.get("/", producto.findAll);
     
-    // Retrieve a single Client with id
+    // BUSCAR POR ID 
     router.get("/:id", producto.findOne);
-    // Update a Client with id
+
+    // ACTUALIZAR
     router.put("/update/:id", producto.update);
-    // Delete a Client with id
+
+    // ELIMINAR
     router.delete("/delete/:id", producto.delete);
-    // Delete all Cliente
+
+    // ELIMINAR TODOS
     router.delete("/delete/", producto.deleteAll);
+
     // Podemos utilizar como una ocpion app.use("EndPoint",router" para simplicar el URI
     // Ej.  http://localhost:Puerto/api/cliente/
+    
     app.use("/api/producto", router);
 };
