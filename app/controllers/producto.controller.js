@@ -11,7 +11,7 @@ exports.create =(req, res)=>{
 if(!req.body.nombre){ //aqui cambio
     res.status(400)({
 
-        massage:"el nombre es requerido"
+        massage:"El nombre del producto es requerido"
     });
     return;
 }
@@ -60,7 +60,7 @@ Producto.findByPk(id) // aqui cambio
 })  
 .catch(err=> {
     res.status(500).send({
-     message: "Error retrieving proveedor with id=" + id
+     message: "Error al buscar el producto con ID = " + id
     });
 });
 };
@@ -76,18 +76,18 @@ exports.update = (req,res)=>{
     .then(num=>{
         if (num==1){
             res.send({
-                message :"cliente was update seccessfully"
+                message :"El producto se actualizó correctamente"
             });
         }
         else {
             res.send ({
-                message :'Cannot update  Cliente whit id=${id}. Maybe Cliente was not found or req.body is empty!' 
+                message :'No se pudo actualizar el producto con ID = id=${id}. Maybe Cliente was not found or req.body is empty!' 
             });
         }
     })
     .catch(err=>{
         res.status(500).send({
-            message: "Error updating Client with id=" + id
+            message: "Error al actualizar el producto con ID = " + id
         });
     });
 };
@@ -103,17 +103,17 @@ Producto.destroy({ // aqui cambio
 .then (num=>{
     if(num==1){
         res.send({
-            message:"Client was deleted seccessfully!"
+            message:"El producto se eliminó correctamente"
         });    
     }else {
         res.send({
-            message:'Cannot delete Client with id=${id}.El cliente no fue encontrado'
+            message:'No se pudo eliminar el producto con ID = ${id}.El cliente no fue encontrado'
     });
 }
 })
 .catch(err => {
             res.status(500).send({
-                message: "Could not delete Tutorial with id=" + id
+                message: "Error al eliminar el producto con ID = " + id
             });
 });
 };
@@ -126,12 +126,12 @@ exports.deleteAll=(req,res) =>{
         truncate:false
     })
     .then(nums=>{
-        res.send({message: '${nums} Clients were deleted  successfully!'});
+        res.send({message: '${nums} Se eliminaron correctamente'});
     })
     .catch(err=>{
         res.status(500).send({
             message:
-            err.message|| "some error occurred while removing all clients"
+            err.message|| "Ocurrió un error al eliminar todos los productos"
         });
     });
 };
